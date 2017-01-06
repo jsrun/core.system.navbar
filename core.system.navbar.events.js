@@ -1,3 +1,10 @@
+/**
+ * Frontend navbar events
+ * 
+ * @author André Ferreira <andrehrf@gmail.com>
+ * @license MIT
+ */
+
 (function(){
     webide.navbar = {clicked: false};    
     var itens = document.querySelectorAll(".wi-navbar-item");

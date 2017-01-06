@@ -1,6 +1,8 @@
 /**
- * Core Navbar
+ * Core navbar module
+ * 
  * @author André Ferreira <andrehrf@gmail.com>
+ * @license MIT
  */
 
 let SystemException = require("../core.plugins.exception.js");
@@ -17,8 +19,8 @@ module.exports = {
      * @type object
      */
     assets: {
-        css: [__dirname + "/style.css"],
-        js: [__dirname + "/events.js"]
+        css: [__dirname + "/core.system.navbar.style.css"],
+        js: [__dirname + "/core.system.navbar.events.js"]
     },
     
     /**
@@ -95,6 +97,6 @@ module.exports = {
      */
     getTemplate: function(webide){
         let fs = require("fs"), ejs = require("ejs"); 
-        return ejs.render(fs.readFileSync(__dirname + "/tpl.ejs").toString(), {itens: this.createNavbar(webide)});
+        return ejs.render(fs.readFileSync(__dirname + "/core.system.navbar.tpl.ejs").toString(), {itens: this.createNavbar(webide)});
     }
 }
