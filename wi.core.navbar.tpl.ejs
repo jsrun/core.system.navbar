@@ -1,0 +1,49 @@
+<navbar class="wi-navbar">
+    <% for(var key in itens) {%>
+        <div class="wi-navbar-item">
+            <div class="wi-navbar-label"><%%= __('<%= itens[key].display %>') %%></div>
+            
+            <div class="wi-navbar-sub1">
+                <% for(var keySub1 in itens[key].itens) {%>
+                <div class="wi-navbar-sub1-item <% if(itens[key].itens[keySub1].class){%><%= itens[key].itens[keySub1].class %><%}%>" <% if(itens[key].itens[keySub1].onclick){%> onclick="<%= itens[key].itens[keySub1].onclick %>"<%}%>>
+                    <%%= __('<%= itens[key].itens[keySub1].display %>') %%>
+                    <% if(itens[key].itens[keySub1].shortcut){ %><span class="wi-navbar-shortcut"><%- itens[key].itens[keySub1].shortcut %></span><% } %>
+                    <% if(typeof itens[key].itens[keySub1].submenu == "object"){ %>
+                        <div class="wi-navbar-submenu">
+                            <i class="fa fa-caret-right" aria-hidden="true"></i>
+                            <div class="wi-navbar-submenu-menu">
+                                <% for(var keySub2 in itens[key].itens[keySub1].submenu){%>
+                                    <div class="wi-navbar-sub1-item" <% if(itens[key].itens[keySub1].submenu[keySub2].class){%><%= itens[key].itens[keySub1].submenu[keySub2].class %><%}%>" <% if(itens[key].itens[keySub1].submenu[keySub2].onclick){%> onclick="<%= itens[key].itens[keySub1].submenu[keySub2].onclick %>"<%}%>>
+                                         <%%= __('<%= itens[key].itens[keySub1].submenu[keySub2].display %>') %%>
+                                         <% if(itens[key].itens[keySub1].submenu[keySub2].shortcut){ %><span class="wi-navbar-shortcut"><%- itens[key].itens[keySub1].submenu[keySub2].shortcut %></span><% } %>
+                                    </div>
+                                    <% if(itens[key].itens[keySub1].submenu[keySub2].divide){ %><div class="wi-navbar-divide"></div><% } %>
+                                <% } %>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+                <% if(itens[key].itens[keySub1].divide){ %><div class="wi-navbar-divide"></div><% } %>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+    
+    <div class="wi-navbar-right">
+        <div class="wi-navbar-right-user wi-navbar-item">
+            <span class="wi-navbar-label"><img src="<%%= user.photos[0].value %%>" alt="<%%= user.displayName %%>" class="wi-navbar-right-user-avatar" /></span>
+                        
+            <div class="wi-navbar-sub1 wi-navbar-sub1-right wi-navbar-sub1-item-without-min-with">
+                <div class="wi-navbar-sub1-item"><%%= __('Account') %%></div>
+                <div class="wi-navbar-divide"></div>
+                <div class="wi-navbar-sub1-item"><%%= __('Logout') %%></div>
+            </div>
+        </div>
+        
+        <% for(var keyWidget in widgets) {%>
+            <div class="wi-navbar-right-user wi-navbar-item" title="<%= widgets[keyWidget].id %>">
+                <%- widgets[keyWidget].tpl %>
+            </div>
+        <% } %>
+    </div>
+</navbar>

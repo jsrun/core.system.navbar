@@ -5,22 +5,30 @@
  * @license MIT
  */
 
-let SystemException = require("../core.plugins.exception.js");
+let _ = require("lodash"),
+    SystemException = require("../core.plugins.exception.js"),
+    TemplateEngine = require("../core.plugins.template.js");
 
 module.exports = {
     /**
      * List of navbar itens
      * @type object
      */
-    itens: {"File": {}, "Edit": {}},
+    itens: {},
+    
+    /**
+     * List of widgets to navbar
+     * @type object
+     */
+    widgets: {},
     
     /**
      * List module assets
      * @type object
      */
     assets: {
-        css: [__dirname + "/core.system.navbar.style.css"],
-        js: [__dirname + "/core.system.navbar.events.js"]
+        css: [__dirname + "/wi.core.navbar.style.css"],
+        js: [__dirname + "/wi.core.navbar.events.js"]
     },
     
     /**
@@ -39,10 +47,10 @@ module.exports = {
     /**
      * Funcion to create navbar
      * 
-     * @param object webide
+     * @param object _this
      * @return object
      */
-    createNavbar: function(webide){
+    createNavbar: function(_this){
         let navbar = {};
         
         for(let key in this.itens){
@@ -55,7 +63,7 @@ module.exports = {
                             navbar[mapTree[0]] = {display: mapTree[keyMapTree], itens: {}};
                         
                         if(mapTree.length == 1){
-                            let command = webide.commands.get(this.itens[key].command);
+                            let command = _this.commands.get(this.itens[key].command);
                             
                             if(command)
                                 navbar[mapTree[0]].shortcut = command.bind.win;
@@ -68,7 +76,7 @@ module.exports = {
                             navbar[mapTree[0]].itens[mapTree[1]] = {display: mapTree[keyMapTree], itens: {}};
                         
                         if(mapTree.length == 2){
-                            let command = webide.commands.get(this.itens[key].command);
+                            let command = _this.commands.get(this.itens[key].command);
                             
                             if(command)
                                 if(command.bind)
@@ -90,13 +98,33 @@ module.exports = {
     },
     
     /**
+     * Function to add widget
+     * 
+     * @param object item
+     * @return void
+     */
+    addWidget: function(item){
+        if(typeof item == "object"){
+            this.widgets[item.id] = item;
+            
+            if(typeof item.css == "object")
+                this.assets.css = _.concat(this.assets.css, item.css);
+            
+            if(typeof item.js == "object")
+                this.assets.js = _.concat(this.assets.js, item.js);
+        }
+        else{
+            throw new SystemException("The default value for navbar widgets is 'object'.");
+        }
+    },
+    
+    /**
      * Function to generate template
      * 
-     * @param object webide
+     * @param object _this
      * @return string
      */
-    getTemplate: function(webide){
-        let fs = require("fs"), ejs = require("ejs"); 
-        return ejs.render(fs.readFileSync(__dirname + "/core.system.navbar.tpl.ejs").toString(), {itens: this.createNavbar(webide)});
+    getTemplate: function(_this){
+        return TemplateEngine(__dirname + "/wi.core.navbar.tpl.ejs").seti18n(_this.i18n).render({itens: this.createNavbar(_this), widgets: this.widgets});
     }
 }
