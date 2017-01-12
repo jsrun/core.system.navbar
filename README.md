@@ -1,4 +1,11 @@
-# WebIDE Core Navbar
+``` 
+ __          __  _    _____ _____  ______   _   _             _                
+ \ \        / / | |  |_   _|  __ \|  ____| | \ | |           | |               
+  \ \  /\  / /__| |__  | | | |  | | |__    |  \| | __ ___   _| |__   __ _ _ __ 
+   \ \/  \/ / _ \ '_ \ | | | |  | |  __|   | . ` |/ _` \ \ / / '_ \ / _` | '__|
+    \  /\  /  __/ |_) || |_| |__| | |____ _| |\  | (_| |\ V /| |_) | (_| | |   
+     \/  \/ \___|_.__/_____|_____/|______(_)_| \_|\__,_| \_/ |_.__/ \__,_|_|                                                                                                                                                                                                                                                                                                                                    
+``` 
 
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/jsrun/core.system.navbar/master/LICENSE)
 

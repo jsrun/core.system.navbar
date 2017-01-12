@@ -1,13 +1,20 @@
 /**
- * Core navbar module
- * 
- * @author André Ferreira <andrehrf@gmail.com>
- * @license MIT
+ *  __          __  _    _____ _____  ______ 
+ *  \ \        / / | |  |_   _|  __ \|  ____|
+ *   \ \  /\  / /__| |__  | | | |  | | |__   
+ *    \ \/  \/ / _ \ '_ \ | | | |  | |  __|  
+ *     \  /\  /  __/ |_) || |_| |__| | |____ 
+ *      \/  \/ \___|_.__/_____|_____/|______|
+ *                                                                            
+ *  @author André Ferreira <andrehrf@gmail.com>
+ *  @license MIT
  */
 
+"use strict";
+
 let _ = require("lodash"),
-    SystemException = require("../core.plugins.exception.js"),
-    TemplateEngine = require("../core.plugins.template.js");
+    SystemException = require("../wi.core.exception.js"),
+    TemplateEngine = require("../wi.core.template.js");
 
 module.exports = {
     /**
@@ -127,4 +134,4 @@ module.exports = {
     getTemplate: function(_this){
         return TemplateEngine(__dirname + "/wi.core.navbar.tpl.ejs").seti18n(_this.i18n).render({itens: this.createNavbar(_this), widgets: this.widgets});
     }
-}
+};
