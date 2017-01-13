@@ -42,17 +42,7 @@
         </div>
     <% } %>
     
-    <!<div class="wi-navbar-right">
-        <div class="wi-navbar-right-user wi-navbar-item">
-            <span class="wi-navbar-label"><img src="<%%= user.photos[0].value %%>" alt="<%%= user.displayName %%>" class="wi-navbar-right-user-avatar" /></span>
-                        
-            <div class="wi-navbar-sub1 wi-navbar-sub1-right wi-navbar-sub1-item-without-min-with">
-                <div class="wi-navbar-sub1-item"><%%= __('Account') %%></div>
-                <div class="wi-navbar-divide"></div>
-                <div class="wi-navbar-sub1-item"><%%= __('Logout') %%></div>
-            </div>
-        </div>
-        
+    <!<div class="wi-navbar-right">        
         <% for(var keyWidget in widgets) {%>
             <div class="wi-navbar-right-user wi-navbar-item" title="<%= widgets[keyWidget].id %>">
                 <%- widgets[keyWidget].tpl %>
