@@ -18,7 +18,9 @@
             
             <div class="wi-navbar-sub1">
                 <% for(var keySub1 in itens[key].itens) {%>
-                <div class="wi-navbar-sub1-item <% if(itens[key].itens[keySub1].class){%><%= itens[key].itens[keySub1].class %><%}%>" <% if(itens[key].itens[keySub1].onclick){%> onclick="<%= itens[key].itens[keySub1].onclick %>"<%}%>>
+                <div class="wi-navbar-sub1-item <% if(itens[key].itens[keySub1].class){%><%= itens[key].itens[keySub1].class %><%}%>" 
+                     <% if(itens[key].itens[keySub1].command){%> onclick="webide.commands.call(this, '<%= itens[key].itens[keySub1].command %>');"<%}%>
+                     <% if(itens[key].itens[keySub1].onclick){%> onclick="<%= itens[key].itens[keySub1].onclick %>"<%}%>>
                     <%%= __('<%= itens[key].itens[keySub1].display %>') %%>
                     <% if(itens[key].itens[keySub1].shortcut){ %><span class="wi-navbar-shortcut"><%- itens[key].itens[keySub1].shortcut %></span><% } %>
                     <% if(typeof itens[key].itens[keySub1].submenu == "object"){ %>
@@ -26,7 +28,9 @@
                             <i class="fa fa-caret-right" aria-hidden="true"></i>
                             <div class="wi-navbar-submenu-menu">
                                 <% for(var keySub2 in itens[key].itens[keySub1].submenu){%>
-                                    <div class="wi-navbar-sub1-item" <% if(itens[key].itens[keySub1].submenu[keySub2].class){%><%= itens[key].itens[keySub1].submenu[keySub2].class %><%}%>" <% if(itens[key].itens[keySub1].submenu[keySub2].onclick){%> onclick="<%= itens[key].itens[keySub1].submenu[keySub2].onclick %>"<%}%>>
+                                    <div class="wi-navbar-sub1-item <% if(itens[key].itens[keySub1].submenu[keySub2].class){%><%= itens[key].itens[keySub1].submenu[keySub2].class %><%}%>"
+                                         <% if(itens[key].itens[keySub1].submenu[keySub2].command){%> onclick="webide.commands.call(this, '<%= itens[key].itens[keySub1].submenu[keySub2].command %>');"<%}%>
+                                         <% if(itens[key].itens[keySub1].submenu[keySub2].onclick){%> onclick="<%= itens[key].itens[keySub1].submenu[keySub2].onclick %>"<%}%>>
                                          <%%= __('<%= itens[key].itens[keySub1].submenu[keySub2].display %>') %%>
                                          <% if(itens[key].itens[keySub1].submenu[keySub2].shortcut){ %><span class="wi-navbar-shortcut"><%- itens[key].itens[keySub1].submenu[keySub2].shortcut %></span><% } %>
                                     </div>

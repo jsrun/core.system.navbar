@@ -52,6 +52,30 @@ module.exports = {
     },
     
     /**
+     * Function to parse and convert Atom menu to WebIDE Navbar
+     * 
+     * @param object menuJSON
+     * @return void
+     */
+    addAtomMenu: function(menuJSON){
+        let _this = this;
+        
+        menuJSON.menu.forEach((item, index) => {
+            let root = item.label;
+            
+            item.submenu.forEach((subitem, index) => {
+                var path = root + "/"+ subitem.label;  
+                
+                for(let key in subitem.submenu){
+                    subitem.submenu[key].display = subitem.submenu[key].label
+                }
+                
+                _this.addItem(path, subitem);
+            });
+        });
+    },
+    
+    /**
      * Funcion to create navbar
      * 
      * @param object _this
@@ -95,6 +119,7 @@ module.exports = {
                             navbar[mapTree[0]].itens[mapTree[1]].checkbox = this.itens[key].checkbox;
                             navbar[mapTree[0]].itens[mapTree[1]].class = this.itens[key].class;
                             navbar[mapTree[0]].itens[mapTree[1]].onclick = this.itens[key].onclick;
+                            navbar[mapTree[0]].itens[mapTree[1]].command = this.itens[key].command;
                         }
                     break;
                 }
