@@ -21,6 +21,7 @@ navbar{
     border-bottom: var(--wi-default-border);
     box-shadow: var(--wi-default-box-shadow);
     color: var(--wi-default-color);
+    z-index: 999999999999999;
 }
 
 .wi-navbar ul{
