@@ -144,8 +144,8 @@ navbar{
     padding: 0;
     font-size: 1px;
     margin: 2px 3px;
-    border-top: 1px solid #353535;
-    border-bottom: 1px solid #565656;
+    border-top: 1px solid var(--wi-default-bg-color);
+    border-bottom: 1px solid var(--wi-default-bg4-color);
     height: 0;
 }
 
