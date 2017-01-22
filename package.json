@@ -1,0 +1,15 @@
+{
+    "name": "wi.core.navbar",
+    "version": "0.2.1",
+    "description": "WebIDE main menu management module",
+    "author": "André Ferreira <andrehrf@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/jsrun/wi.core.navbar"
+    },
+    "bugs": {
+        "url": "https://github.com/jsrun/wi.core.navbar/issues"
+    },
+    "homepage": "https://github.com/jsrun/wi.core.navbar"
+}

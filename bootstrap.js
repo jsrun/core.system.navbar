@@ -28,16 +28,7 @@ module.exports = {
      * @type object
      */
     widgets: {},
-    
-    /**
-     * List module assets
-     * @type object
-     */
-    assets: {
-        css: [__dirname + "/wi.core.navbar.style.css"],
-        js: [__dirname + "/wi.core.navbar.events.js"]
-    },
-    
+        
     /**
      * Function to add item menu
      * 
@@ -157,6 +148,6 @@ module.exports = {
      * @return string
      */
     getTemplate: function(_this){
-        return TemplateEngine(__dirname + "/wi.core.navbar.tpl.ejs").seti18n(_this.i18n).render({itens: this.createNavbar(_this), widgets: this.widgets});
+        return TemplateEngine(__dirname + "/template.ejs").seti18n(_this.i18n).render({itens: this.createNavbar(_this), widgets: this.widgets});
     }
 };
