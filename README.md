@@ -8,7 +8,7 @@
                                                                                                                                                                                                                                                                                                                                   
 ``` 
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/jsrun/core.system.navbar/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/jsrun/wi.core.navbar/master/LICENSE)
 
 WebIDE main menu management module
  
@@ -22,7 +22,6 @@ webide.commands.addCommand({
 
 webide.navbar.addItem("Edit/Copy", {
     command: "copy",
-    onclick: "webide.copy()",
     divide: true
 }, 200);
 ```
