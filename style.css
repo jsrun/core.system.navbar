@@ -51,7 +51,7 @@ navbar{
     user-select: none;
     overflow: visible;
     z-index: 1400000;
-    text-shadow: 0px 1px 0px #464646;
+    text-shadow: var(--wi-default-text-shadow) !important;
 }
 
 .wi-navbar-item:hover{
@@ -117,7 +117,7 @@ navbar{
 .wi-navbar-sub1-item{
     position: relative;
     font-family: var(--wi-default-font-family);
-    color: #FFF !important;
+    color: var(--wi-navbar-color) !important;
     padding: 3px 16px 5px 23px;
     white-space: nowrap;
     cursor: default;
