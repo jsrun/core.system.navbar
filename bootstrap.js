@@ -15,6 +15,21 @@
 let _ = require("lodash"),
     SystemException = require("../wi.core.exception.js"),
     TemplateEngine = require("../wi.core.template.js");
+    
+_.mixin({
+    'sortKeysBy': function (obj, comparator) {
+        var keys = _.sortBy(_.keys(obj), function (key) {
+            return comparator ? comparator(obj[key], key) : key;
+        });
+                
+        var newobj = {};
+        
+        for(var key in keys)
+            newobj[keys[key]] = obj[keys[key]];
+        
+        return newobj;
+    }
+});
 
 module.exports = {
     /**
@@ -36,6 +51,12 @@ module.exports = {
      * @return this
      */ 
     addItem: function(path, item, index){
+        item.path = path;
+        item.index = index;
+        
+        if(index)
+            path = index + "_" + path;
+        
         if(typeof item == "object" && typeof path == "string")
             this.itens[path] = item;
         else
@@ -74,9 +95,10 @@ module.exports = {
      */
     createNavbar: function(_this){
         let navbar = {};
-        
+        this.itens = _.sortKeysBy(this.itens, (value, key) => { return value.index; }); //Order by index
+                
         for(let key in this.itens){
-            let mapTree = key.split("/");
+            let mapTree = this.itens[key].path.split("/");
             
             for(let keyMapTree in mapTree){                
                 switch(parseInt(keyMapTree)){

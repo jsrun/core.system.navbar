@@ -15,7 +15,7 @@
 webide.module("navbar", function(){
     this.navbar = {
         clicked: false,
-        
+                
         bind: function(){
             $(".wi-window-modal").click(function(){
                 webide.navbar.clicked = false;
