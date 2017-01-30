@@ -133,6 +133,7 @@ module.exports = {
                             navbar[mapTree[0]].itens[mapTree[1]].class = this.itens[key].class;
                             navbar[mapTree[0]].itens[mapTree[1]].onclick = this.itens[key].onclick;
                             navbar[mapTree[0]].itens[mapTree[1]].command = this.itens[key].command;
+                            navbar[mapTree[0]].itens[mapTree[1]].disabled = this.itens[key].disabled;
                         }
                     break;
                 }

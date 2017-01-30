@@ -130,6 +130,17 @@ navbar{
     background: var(--wi-default-bg-color);
 }
 
+.wi-navbar-sub1-disabled{
+    color: #808080 !important;
+    text-shadow: none !important;
+}
+
+.wi-navbar-sub1-disabled:hover{
+    background: var(--wi-default-bg2-color) !important;
+    color: #808080 !important;
+    text-shadow: none !important;
+}
+
 .wi-navbar-shortcut{
     font-size: 12px;
     right: 5px;
