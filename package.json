@@ -1,6 +1,6 @@
 {
     "name": "wi.core.navbar",
-    "version": "0.2.3",
+    "version": "0.2.4",
     "description": "WebIDE main menu management module",
     "author": "André Ferreira <andrehrf@gmail.com>",
     "license": "MIT",

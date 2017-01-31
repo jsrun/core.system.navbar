@@ -93,7 +93,7 @@ module.exports = {
      * @param object _this
      * @return object
      */
-    createNavbar: function(_this){
+    createNavbar: function(commands){
         let navbar = {};
         this.itens = _.sortKeysBy(this.itens, (value, key) => { return value.index; }); //Order by index
                 
@@ -107,7 +107,7 @@ module.exports = {
                             navbar[mapTree[0]] = {display: mapTree[keyMapTree], itens: {}};
                         
                         if(mapTree.length == 1){
-                            let command = _this.commands.get(this.itens[key].command);
+                            let command = commands.get(this.itens[key].command);
                             
                             if(command)
                                 navbar[mapTree[0]].shortcut = command.bind.win;
@@ -120,7 +120,7 @@ module.exports = {
                             navbar[mapTree[0]].itens[mapTree[1]] = {display: mapTree[keyMapTree], itens: {}};
                         
                         if(mapTree.length == 2){
-                            let command = _this.commands.get(this.itens[key].command);
+                            let command = commands.get(this.itens[key].command);
                             
                             if(command)
                                 if(command.bind)
@@ -170,7 +170,7 @@ module.exports = {
      * @param object _this
      * @return string
      */
-    getTemplate: function(_this){
-        return TemplateEngine(__dirname + "/template.ejs").seti18n(_this.i18n).render({itens: this.createNavbar(_this), widgets: this.widgets});
+    getTemplate: function(commands, navbar, i18n){
+        return TemplateEngine(__dirname + "/template.ejs").seti18n(i18n).render({itens: navbar.createNavbar(commands), widgets: navbar.widgets});
     }
 };
