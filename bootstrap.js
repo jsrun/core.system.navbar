@@ -12,9 +12,7 @@
 
 "use strict";
 
-let _ = require("lodash"),
-    SystemException = require("../wi.core.exception.js"),
-    TemplateEngine = require("../wi.core.template.js");
+let _ = require("lodash");
     
 _.mixin({
     'sortKeysBy': function (obj, comparator) {
@@ -60,7 +58,7 @@ module.exports = {
         if(typeof item == "object" && typeof path == "string")
             this.itens[path] = item;
         else
-            throw new SystemException("The default value for navbar item is 'object' and path is 'string'.");
+            throw new "The default value for navbar item is 'object' and path is 'string'.";
     },
     
     /**
@@ -160,7 +158,7 @@ module.exports = {
                 this.assets.js = _.concat(this.assets.js, item.js);
         }
         else{
-            throw new SystemException("The default value for navbar widgets is 'object'.");
+            throw new "The default value for navbar widgets is 'object'.";
         }
     },
     
@@ -170,7 +168,7 @@ module.exports = {
      * @param object _this
      * @return string
      */
-    getTemplate: function(commands, navbar, i18n){
-        return TemplateEngine(__dirname + "/template.ejs").seti18n(i18n).render({itens: navbar.createNavbar(commands), widgets: navbar.widgets});
+    getTemplate: function(commands, navbar, i18n, template){
+        return new template(__dirname + "/template.ejs").seti18n(i18n).render({itens: navbar.createNavbar(commands), widgets: navbar.widgets});
     }
 };
