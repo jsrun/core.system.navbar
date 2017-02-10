@@ -159,6 +159,7 @@ module.exports = {
                                 if(command.bind)
                                     navbar[mapTree[0]].itens[mapTree[1]].shortcut = command.bind.win;
                             
+                            navbar[mapTree[0]].itens[mapTree[1]].id = this.itens[key].id;
                             navbar[mapTree[0]].itens[mapTree[1]].icon = this.itens[key].icon;
                             navbar[mapTree[0]].itens[mapTree[1]].divide = this.itens[key].divide;
                             navbar[mapTree[0]].itens[mapTree[1]].submenu = this.itens[key].submenu;

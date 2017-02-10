@@ -17,9 +17,11 @@
         <div class="wi-navbar-item">
             <div class="wi-navbar-label"><%%= __('<%= itens[key].display %>') %%></div>
             
-            <div class="wi-navbar-sub1">
+            <div class="wi-navbar-sub1" <% if(itens[key].id){%>id="<%= itens[key].id %>"<%}%>>
                 <% for(var keySub1 in itens[key].itens) {%>
-                <div class="wi-navbar-sub1-item <% if(itens[key].itens[keySub1].disabled){%>wi-navbar-sub1-disabled<%}%> <% if(itens[key].itens[keySub1].class){%><%= itens[key].itens[keySub1].class %><%}%>" 
+                <div <% if(itens[key].itens[keySub1].id){%>id="<%= itens[key].itens[keySub1].id %>"<%}%> class="wi-navbar-sub1-item 
+                     <% if(itens[key].itens[keySub1].disabled){%>wi-navbar-sub1-disabled<%}%> 
+                     <% if(itens[key].itens[keySub1].class){%><%= itens[key].itens[keySub1].class %><%}%>" 
                      <% if(itens[key].itens[keySub1].command){
                             var args = (itens[key].itens[keySub1].args) ? JSON.stringify(itens[key].itens[keySub1].args): "null";
                      %> 

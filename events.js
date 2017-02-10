@@ -13,9 +13,37 @@
 "use strict";
 
 webide.module("navbar", function(){
-    this.navbar = {
+    this.extends("navbar", {
+        /**
+         * Sets whether the menu has been clicked
+         * @type boolean
+         */
         clicked: false,
+        
+        /**
+         * Function to enable navbar item
+         * 
+         * @param string id
+         * @return void
+         */
+        enable: function(id){
+            $(id, $(".wi-navbar")).removeClass("wi-navbar-sub1-disabled");
+        },
+        
+        /**
+         * Function to disable navbar item
+         * 
+         * @param string id
+         * @return void
+         */
+        disable: function(id){
+            $(id, $(".wi-navbar")).addClass("wi-navbar-sub1-disabled");
+        },
                 
+        /**
+         * Function to set basic menu operation settings
+         * @return void
+         */
         bind: function(){
             $(".wi-window-modal").click(function(){
                 webide.navbar.clicked = false;
@@ -53,7 +81,7 @@ webide.module("navbar", function(){
                 $(".wi-navbar-item-selected").removeClass("wi-navbar-item-selected");
             });
         }
-    };   
+    });   
     
-    this.navbar.bind();    
+    this.navbar.bind();
 });

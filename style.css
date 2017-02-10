@@ -181,6 +181,10 @@ navbar{
     display: block;
 }
 
+.wi-navbar-sub1-disabled:hover .wi-navbar-submenu-menu{
+    display: none !important;
+}
+
 .wi-navbar-submenu-menu{
     position: absolute;
     display: block;
@@ -213,6 +217,3 @@ navbar{
     width: 16px;
     height: 16px;
 }
-
-
-
