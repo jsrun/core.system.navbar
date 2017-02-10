@@ -12,7 +12,8 @@
 
 "use strict";
 
-let _ = require("lodash");
+let fs = require("fs"),
+    _ = require("lodash");
     
 _.mixin({
     'sortKeysBy': function (obj, comparator) {
@@ -83,6 +84,40 @@ module.exports = {
                 _this.addItem(path, subitem);
             });
         });
+    },
+    
+    /**
+     * Function to assign by object
+     * 
+     * @param object itens
+     * @return void
+     */
+    assign: function(itens){
+        for(let key in itens){
+            if(typeof itens[key] == "object"){
+                try{
+                    var path = itens[key].path;
+
+                    if(itens[key].index)
+                        path = itens[key].index + "_" + path;
+                    
+                    this.itens[path] = itens[key];
+                }
+                catch(e){ console.log(e.message); }
+            }
+        }
+    },
+    
+    /**
+     * Function to import by file
+     * 
+     * @return void
+     */
+    "import": function(filename){
+        try{
+            if(fs.statSync(filename).isFile())
+                this.assign(JSON.parse(fs.readFileSync(filename).toString())); 
+        }catch(e){ console.log(e.message); }
     },
     
     /**
